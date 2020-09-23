@@ -1,0 +1,147 @@
+VERSION 5.00
+Begin VB.PropertyPage Propertys 
+   BackColor       =   &H00E0E0E0&
+   Caption         =   "Use Format"
+   ClientHeight    =   3495
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   5925
+   PaletteMode     =   0  'Rasterbild
+   ScaleHeight     =   3495
+   ScaleWidth      =   5925
+   Begin VB.OptionButton Option1 
+      Appearance      =   0  '2D
+      BackColor       =   &H00E0E0E0&
+      Caption         =   "Yes/No Checked"
+      ForeColor       =   &H80000008&
+      Height          =   315
+      Index           =   6
+      Left            =   120
+      TabIndex        =   7
+      Top             =   2280
+      Width           =   2175
+   End
+   Begin VB.OptionButton Option1 
+      Appearance      =   0  '2D
+      BackColor       =   &H00E0E0E0&
+      Caption         =   "Percent"
+      ForeColor       =   &H80000008&
+      Height          =   315
+      Index           =   5
+      Left            =   120
+      TabIndex        =   6
+      Top             =   1920
+      Width           =   2175
+   End
+   Begin VB.OptionButton Option1 
+      Appearance      =   0  '2D
+      BackColor       =   &H00E0E0E0&
+      Caption         =   "Date"
+      ForeColor       =   &H80000008&
+      Height          =   315
+      Index           =   4
+      Left            =   120
+      TabIndex        =   4
+      Top             =   1560
+      Width           =   2175
+   End
+   Begin VB.OptionButton Option1 
+      Appearance      =   0  '2D
+      BackColor       =   &H00E0E0E0&
+      Caption         =   "Number"
+      ForeColor       =   &H80000008&
+      Height          =   315
+      Index           =   1
+      Left            =   120
+      TabIndex        =   3
+      Top             =   480
+      Width           =   2175
+   End
+   Begin VB.OptionButton Option1 
+      Appearance      =   0  '2D
+      BackColor       =   &H00E0E0E0&
+      Caption         =   "Richtext"
+      ForeColor       =   &H80000008&
+      Height          =   315
+      Index           =   3
+      Left            =   120
+      TabIndex        =   2
+      Top             =   1200
+      Width           =   2175
+   End
+   Begin VB.OptionButton Option1 
+      Appearance      =   0  '2D
+      BackColor       =   &H00E0E0E0&
+      Caption         =   "Textbox"
+      ForeColor       =   &H80000008&
+      Height          =   315
+      Index           =   2
+      Left            =   120
+      TabIndex        =   1
+      Top             =   840
+      Width           =   2175
+   End
+   Begin VB.OptionButton Option1 
+      Appearance      =   0  '2D
+      BackColor       =   &H00E0E0E0&
+      Caption         =   "Currency"
+      ForeColor       =   &H80000008&
+      Height          =   315
+      Index           =   0
+      Left            =   120
+      TabIndex        =   0
+      Top             =   120
+      Width           =   2175
+   End
+   Begin VB.Label Label1 
+      BackColor       =   &H00C0FFFF&
+      Caption         =   " This Control use the System Settings for the Currency Format and Date Format"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H000000FF&
+      Height          =   375
+      Left            =   0
+      TabIndex        =   5
+      Top             =   3120
+      Width           =   5955
+   End
+End
+Attribute VB_Name = "Propertys"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+
+Private Sub PropertyPage_SelectionChanged()
+
+If SelectedControls(0).cTextbox = True Then Option1(2).Value = True
+If SelectedControls(0).cPercent = True Then Option1(5).Value = True
+If SelectedControls(0).cNumber = True Then Option1(1).Value = True
+If SelectedControls(0).cCurrency = True Then Option1(0).Value = True
+If SelectedControls(0).cRichEdit = True Then Option1(3).Value = True
+If SelectedControls(0).cDateBox = True Then Option1(4).Value = True
+If SelectedControls(0).cYesNo = True Then Option1(6).Value = True
+End Sub
+
+Private Sub Option1_Click(Index As Integer)
+  Changed = True
+End Sub
+
+Private Sub PropertyPage_ApplyChanges()
+  
+    SelectedControls(0).cCurrency = Option1(0).Value
+    SelectedControls(0).cNumber = Option1(1).Value
+    SelectedControls(0).cPercent = Option1(5).Value
+    SelectedControls(0).cTextbox = Option1(2).Value
+    SelectedControls(0).cDateBox = Option1(4).Value
+    SelectedControls(0).cRichEdit = Option1(3).Value
+    SelectedControls(0).cYesNo = Option1(6).Value
+End Sub
+
